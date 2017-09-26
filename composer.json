@@ -1,0 +1,27 @@
+{
+  "name": "pointer/search-engine-aggregator",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "SearchEngineAggregator\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SearchEngineAggregator\\Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Jeroen Mol",
+      "email": "j.mol@pointerbp.nl"
+    }
+  ],
+  "require": {
+    "psr/http-message": "^1.0",
+    "beberlei/assert": "^2.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8"
+  }
+}
