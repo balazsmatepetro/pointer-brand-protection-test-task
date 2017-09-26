@@ -16,18 +16,21 @@ you only have to finish it.
 and output the results.
 
 **Engine(s)**
+
 How you implement the search engine is totally up to you, as long as it has a unique engine
 identifier (to mark a result as the result of that specific search engine) and returns an implementation
 of a ResultsInterface. For this assignment only fetching the results of only the first page of the search
 engine results will be sufficient.
 
 **Result(s)**
+
 The search engine aggregator has to combine the results from the first page from every search engine.
 Duplicates are not allowed. In case of a duplicate, you should only add the source (engine identifier)
 to the existing search result with the following result. A search result does not need to contain more
 than what’s defined in the ResultInterface.
 
 **Engine aggregator**
+
 The engine aggregator should use one or many Engine’s to search for a keyword/query and merge
 the results together (as described above). The EngineAggregator should, just like the Engine, return a
 ResultsInterface. The only difference is that the result will be a merge the results from the aggregated
