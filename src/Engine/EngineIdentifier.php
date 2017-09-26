@@ -4,13 +4,17 @@ namespace SearchEngineAggregator\Engine;
 use Assert\Assertion;
 
 /**
- * Class EngineIdentifier
+ * Description of EngineIdentifier
+ * 
  * @package SearchEngineAggregator\Engine
  * @author Jeroen Mol <j.mol@pointerbp.nl>
+ * @author Balázs Máté Petró <petrobalazsmate@gmail.com>
  */
-final class EngineIdentifier
+final class EngineIdentifier implements EngineIdentifierInterface
 {
     /**
+     * The string representation of engine identifier.
+     * 
      * @var string
      */
     private $identifier;
@@ -29,13 +33,15 @@ final class EngineIdentifier
     }
 
     /**
-     * Creates an engine identifier from string
-     *
-     * @static
-     *
-     * @param string $identifier
-     *
-     * @return EngineIdentifier
+     * @inheritDoc
+     */
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    /**
+     * @inheritDoc
      */
     public static function fromString($identifier)
     {
@@ -43,7 +49,7 @@ final class EngineIdentifier
     }
 
     /**
-     * Returns the string representation
+     * Returns the string representation of engine identifier.
      *
      * @return string
      */
@@ -51,5 +57,4 @@ final class EngineIdentifier
     {
         return $this->identifier;
     }
-
 }

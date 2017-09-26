@@ -1,13 +1,16 @@
 <?php
 namespace SearchEngineAggregator\Result;
 
+use Exception;
 use Psr\Http\Message\UriInterface;
-use SearchEngineAggregator\Engine\EngineIdentifier;
+use SearchEngineAggregator\Engine\EngineIdentifierInterface;
 
 /**
- * Interface ResultInterface
+ * Description of ResultInterface
+ * 
  * @package SearchEngineAggregator\Result
  * @author Jeroen Mol <j.mol@pointerbp.nl>
+ * @author Balázs Máté Petró <petrobalazsmate@gmail.com>
  */
 interface ResultInterface
 {
@@ -26,48 +29,42 @@ interface ResultInterface
     public function getUri();
 
     /**
-     * Returns whether the result equals another result
+     * Returns true when the result is the same as the given, else false.
      *
-     * @param ResultInterface $result
-     *
+     * @param ResultInterface $result The result to check.
      * @return bool
      */
     public function equals(ResultInterface $result);
 
     /**
-     * Adds an engine identifier to the result
+     * Adds the given engine identifier to the result.
      *
-     * @param EngineIdentifier $identifier
-     *
-     * @return $this
+     * @param EngineIdentifierInterface $identifier The engine identifier to add.
+     * @return ResultInterface
      */
-    public function addIdentifier(EngineIdentifier $identifier);
+    public function addIdentifier(EngineIdentifierInterface $identifier);
 
     /**
-     * Returns whether an engine identifier exists in the result
+     * Returns true when the engine identifier exists in the result, else false.
      *
-     * @param EngineIdentifier $identifier
-     *
+     * @param EngineIdentifierInterface $identifier The engine identifier to check.
      * @return bool
      */
-    public function hasIdentifier(EngineIdentifier $identifier);
+    public function hasIdentifier(EngineIdentifierInterface $identifier);
 
     /**
-     * Removes an engine identifier from the result
+     * Removes the given engine identifier from the result.
      *
-     * @param EngineIdentifier $identifier
-     *
-     * @throws \Exception When engine identifier is the only engine identifier of the result
-     *
-     * @return $this
+     * @param EngineIdentifierInterface $identifier The engine identifier to remove.
+     * @throws Exception Thrown when the engine identifier is the only one engine identifier of the result.
+     * @return ResultInterface
      */
-    public function removeIdentifier(EngineIdentifier $identifier);
+    public function removeIdentifier(EngineIdentifierInterface $identifier);
 
     /**
-     * Returns all engine identifiers
+     * Returns all engine identifiers.
      *
-     * @return EngineIdentifier[]
+     * @return EngineIdentifierInterface[]
      */
     public function getIdentifiers();
-
 }

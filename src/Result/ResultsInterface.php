@@ -1,49 +1,56 @@
 <?php
 namespace SearchEngineAggregator\Result;
 
+use Countable;
+use IteratorAggregate;
+
 /**
- * Interface ResultsInterface
+ * Description of ResultsInterface
+ * 
  * @package SearchEngineAggregator\Result
  * @author Jeroen Mol <j.mol@pointerbp.nl>
+ * @author Balázs Máté Petró <petrobalazsmate@gmail.com>
  */
-interface ResultsInterface extends \Countable
+interface ResultsInterface extends Countable, IteratorAggregate
 {
     /**
-     * Adds a search result to the list
+     * Adds the given search result item to the list.
      *
-     * @param \SearchEngineAggregator\Result\ResultInterface $result
-     *
+     * @param ResultInterface $result The result item to add.
      * @return ResultsInterface
      */
     public function add(ResultInterface $result);
 
     /**
-     * Returns whether a search result exists
+     * Returns true if the given result item belongs to the list, else false.
      *
-     * @param ResultInterface $result
-     *
+     * @param ResultInterface $result The result item to check.
      * @return bool
      */
     public function has(ResultInterface $result);
 
     /**
-     * Remove a search result from the list
+     * Remove the given search item from the list.
      *
-     * @param ResultsInterface $result
-     *
-     * @return mixed
+     * @param ResultInterface $result The result item to remove.
+     * @return ResultsInterface
      */
-    public function remove(ResultsInterface $result);
+    // NOTE: To be honest, this part of the interface was a little bit unclear for me.
+    // In the original code, the type hint was ResultsInterface. Was it just a typo?
+    // Another thing that I didn't understood, the return type was marked as mixed.
+    // Should the method to be able to remove a whole list? Please give me a feedback 
+    // about this after you've reviewed my code! :)
+    public function remove(ResultInterface $result);
 
     /**
-     * Returns all search results
+     * Returns all of the search result items.
      *
-     * @return \SearchEngineAggregator\Result\ResultInterface[]
+     * @return ResultInterface[]
      */
     public function all();
 
     /**
-     * Merges search results
+     * Merges search results.
      *
      * Example:
      *
@@ -58,9 +65,8 @@ interface ResultsInterface extends \Countable
      * [title: u, url: v, identifiers: [w]]
      * [title: x, url: y, identifiers: [a,z]]
      *
-     * @param \SearchEngineAggregator\Result\ResultsInterface $results
-     *
-     * @return $this
+     * @param ResultsInterface $results The results to merge.
+     * @return ResultsInterface
      */
     public function merge(ResultsInterface $results);
 }

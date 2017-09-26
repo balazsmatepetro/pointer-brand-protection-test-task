@@ -8,20 +8,21 @@ namespace SearchEngineAggregator\Engine;
  *
  * @package SearchEngineAggregator\Engine
  * @author Jeroen Mol <j.mol@pointerbp.nl>
+ * @author Balázs Máté Petró <petrobalazsmate@gmail.com>
  */
 abstract class AbstractEngine implements Engine
 {
     /**
-     * @var EngineIdentifier
+     * @var EngineIdentifierInterface
      */
-    private $identifier;
+    protected $identifier;
 
     /**
      * AbstractEngine constructor.
      *
-     * @param EngineIdentifier $identifier
+     * @param EngineIdentifierInterface $identifier The engine identifier.
      */
-    public function __construct(EngineIdentifier $identifier)
+    public function __construct(EngineIdentifierInterface $identifier)
     {
         $this->identifier = $identifier;
     }
@@ -33,5 +34,4 @@ abstract class AbstractEngine implements Engine
     {
         return $this->identifier;
     }
-
 }
